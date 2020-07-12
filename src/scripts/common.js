@@ -477,6 +477,7 @@ window.togglbutton = {
 
     const project = invokeIfFunction(params.projectName);
     const description = invokeIfFunction(params.description);
+    const asanaTaskId = invokeIfFunction(params.asanaTaskId);
     togglbutton.currentProject = project;
     togglbutton.currentDescription = description;
     link.title = description + (project ? ' - ' + project : '');
@@ -512,7 +513,7 @@ window.togglbutton = {
           type: 'timeEntry',
           respond: true,
           projectId: invokeIfFunction(params.projectId),
-          description: invokeIfFunction(params.description),
+          description: invokeIfFunction(params.description) + ' - [' + invokeIfFunction(asanaTaskId) + ']',
           tags: invokeIfFunction(params.tags),
           projectName: invokeIfFunction(params.projectName),
           createdWith: togglbutton.fullVersion + '-' + togglbutton.serviceName,

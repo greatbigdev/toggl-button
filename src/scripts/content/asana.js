@@ -37,6 +37,7 @@ togglbutton.render('.SpreadsheetRow .SpreadsheetTaskName:not(.toggl)', { observe
       return;
     }
 
+    const asanaTaskIdSelector = () => taskNameCell.querySelector('textarea').id.split('_')[2].trim();
     const descriptionSelector = () => taskNameCell.querySelector('textarea').textContent.trim();
     const projectHeaderSelector = () => {
       // Try to look for for page project title instead.
@@ -70,6 +71,7 @@ togglbutton.render('.SpreadsheetRow .SpreadsheetTaskName:not(.toggl)', { observe
       description: descriptionSelector,
       projectName: projectSelector,
       tags: tagsSelector,
+      asanaTaskId: asanaTaskIdSelector,
       buttonType: 'minimal'
     });
 
