@@ -513,7 +513,7 @@ window.togglbutton = {
           type: 'timeEntry',
           respond: true,
           projectId: invokeIfFunction(params.projectId),
-          description: invokeIfFunction(params.description) + ' - [' + invokeIfFunction(asanaTaskId) + ']',
+          description: invokeIfFunction(params.description) + (asanaTaskId ? ' - [' + invokeIfFunction(asanaTaskId) + ']' : ''),
           tags: invokeIfFunction(params.tags),
           projectName: invokeIfFunction(params.projectName),
           createdWith: togglbutton.fullVersion + '-' + togglbutton.serviceName,

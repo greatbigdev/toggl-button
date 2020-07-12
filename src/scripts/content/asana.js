@@ -86,6 +86,7 @@ togglbutton.render('.MyTasksTaskRow:not(.toggl)', { observe: true },
       // Due to the way this UI is rendered, we must check for existence of old buttons manually.
       return;
     }
+    const asanaTaskIdSelector = () => elem.querySelector('.TaskName textarea').id.split('_')[2].trim();
     const descriptionSelector = () => elem.querySelector('.TaskName textarea').textContent;
 
     // attempt at separating projects and tags, which are not differentiated in the dom
@@ -114,6 +115,7 @@ togglbutton.render('.MyTasksTaskRow:not(.toggl)', { observe: true },
       description: descriptionSelector,
       projectName: projectSelector,
       tags: tagsSelector,
+      asanaTaskId: asanaTaskIdSelector,
       buttonType: 'minimal'
     });
 
@@ -138,6 +140,10 @@ togglbutton.render(
       return $('.SingleTaskTitleInput-taskName textarea', elem).textContent.trim();
     };
 
+    const asanaTaskIdSelector = () => {
+      return $('.SingleTaskPaneSpreadsheet .TaskProjects a', elem).href.split('/').slice(-1)[0].trim();
+    };
+
     const projectSelector = () => {
       const projectEl = elem.querySelectorAll('.TaskProjectToken-potTokenizerPill');
       return [...projectEl].map(el => el.textContent.trim());
@@ -153,6 +159,7 @@ togglbutton.render(
       description: descriptionSelector,
       projectName: projectSelector,
       tags: tagsSelector,
+      asanaTaskId: asanaTaskIdSelector,
       buttonType: 'minimal'
     });
 
